@@ -20,31 +20,31 @@ def save_data(data):
 def reset_game():
     console.print("[bold red]ตัวละครตายแล้ว! เริ่มต้นใหม่...[/bold red]")
     data = {
-        "name": "",
-        "level": 1,
-        "hp": 100,
-        "max_hp": 100,
-        "attack": 10,
-        "defense": 5,
-        "exp": 0,
-        "gold": 50,
-        "inventory": []
+        "name" : "",
+        "level" : 1,
+        "hp" : 100,
+        "max_hp" : 100,
+        "attack" : 10,
+        "defense" : 5,
+        "exp" : 0,
+        "gold" : 50,
+        "inventory" : []
     }
     save_data(data)
     main()
 
 def create_character():
-    name = input("กรุณากรอกชื่อตัวละครของคุณ: ")
+    name = input("กรุณากรอกชื่อตัวละครของคุณ : ")
     data = {
-        "name": name,
-        "level": 1,
-        "hp": 100,
-        "max_hp": 100,
-        "attack": 10,
-        "defense": 5,
-        "exp": 0,
-        "gold": 50,
-        "inventory": []
+        "name" : name,
+        "level" : 1,
+        "hp" : 100,
+        "max_hp" : 100,
+        "attack" : 10,
+        "defense" : 5,
+        "exp" : 0,
+        "gold" : 50,
+        "inventory" : []
     }
     save_data(data)
     return data
@@ -73,11 +73,11 @@ def level_up(player):
     player["attack"] += 2
     player["defense"] += 1
     player["exp"] = 0
-    console.print(f"{player['name']} เลเวลอัพเป็น {player['level']}! HP: {player['max_hp']}, ATK: {player['attack']}, DEF: {player['defense']}", style="bold cyan")
+    console.print(f"{player['name']} เลเวลอัพเป็น {player['level']}! HP : {player['max_hp']}, ATK : {player['attack']}, DEF : {player['defense']}", style="bold cyan")
 
 def battle(player):
     monster_type = random.choice([("Goblin", 1, 1), ("Orc", 1.2, 1.2), ("Slime", 0.8, 0.5)])
-    monster = {"name": monster_type[0], "level": random.randint(1, player["level"] + 1), "hp": 20 * monster_type[1], "attack": 5 * monster_type[1], "defense": 2 * monster_type[2]}
+    monster = {"name" : monster_type[0], "level" : random.randint(1, player["level"] + 1), "hp" : 20 * monster_type[1], "attack" : 5 * monster_type[1], "defense" : 2 * monster_type[2]}
     
     console.print(f"[bold red]เริ่มการต่อสู้! {player['name']} vs {monster['name']}[/bold red]")
     while player["hp"] > 0 and monster["hp"] > 0:
@@ -102,11 +102,11 @@ def main():
     
     while True:
         console.print("\n[1] ออกล่ามอนสเตอร์  [2] ดูสถานะ  [3] ออกจากเกม", style="bold yellow")
-        choice = input("เลือกคำสั่ง: ")
+        choice = input("เลือกคำสั่ง : ")
         if choice == "1":
             battle(data)
         elif choice == "2":
-            console.print(f"\n[bold cyan]{data['name']} (LV {data['level']}) HP: {data['hp']}/{data['max_hp']} ATK: {data['attack']} DEF: {data['defense']} EXP: {data['exp']} Gold: {data['gold']}")
+            console.print(f"\n[bold cyan]{data['name']} (LV {data['level']}) HP : {data['hp']}/{data['max_hp']} ATK : {data['attack']} DEF : {data['defense']} EXP : {data['exp']} Gold : {data['gold']}")
         elif choice == "3":
             console.print("[bold red]ออกจากเกม...[/bold red]")
             save_data(data)
@@ -114,5 +114,4 @@ def main():
         else:
             console.print("[bold red]ตัวเลือกไม่ถูกต้อง![/bold red]")
 
-if __name__ == "__main__":
-    main()
+main()
